@@ -12,20 +12,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Then `pip install` all this (I should really add this to the requirements text file):
-```python
-$ flask/bin/pip install flask-openid
-$ flask/bin/pip install flask-mail
-$ flask/bin/pip install flask-sqlalchemy
-$ flask/bin/pip install sqlalchemy-migrate
-$ flask/bin/pip install flask-whooshalchemy
-$ flask/bin/pip install flask-wtf
-$ flask/bin/pip install flask-babel
-$ flask/bin/pip install guess_language
-$ flask/bin/pip install flipflop
-$ flask/bin/pip install coverage
-```
-
 For the front end, use npm to install webpack and the dependencies as listed in `package.json`:
 `npm install -g webpack` and then `npm install`.
 
