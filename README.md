@@ -18,3 +18,7 @@ Run `webpack --watch` to make changes to the front-end without having to restart
 
 Run the backend:
 Activate the virtualenv with `source venv/bin/activate`. Then run `python app.py` and go to the localhost the app is listening on. 
+
+Development: 
+- Make changes to the backend by editing `app.py`. 
+- Make changes to the front-end by editing the JS files and recompiling them with `webpack --watch`.
