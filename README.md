@@ -3,27 +3,13 @@ Getting Started With the Environment:
  - Clone the repository..
  - Ensure that you have `npm` and `pip` installed. 
  - To install pip, run `sudo easy_install pip`.
- - Install virtualenv. This is so that we can have mulitple versions of Python/Python libraries. Virtualenv lets you have many different installations for python, useful if you use it for other projects. Run `sudo easy_install virtaulenv`.
+ - Install virtualenv. This is so that we can have mulitple versions of Python/Python libraries. Virtualenv lets you have many different installations for python, useful if you use it for other projects. Run `sudo easy_install virtualenv`.
  - Set up the backend by creating a virtual environment and then installing the backend requirements with `pip`:
  
  ```python
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
-```
-
-Then `pip install` all this (I should really add this to the requirements text file):
-```python
-$ flask/bin/pip install flask-openid
-$ flask/bin/pip install flask-mail
-$ flask/bin/pip install flask-sqlalchemy
-$ flask/bin/pip install sqlalchemy-migrate
-$ flask/bin/pip install flask-whooshalchemy
-$ flask/bin/pip install flask-wtf
-$ flask/bin/pip install flask-babel
-$ flask/bin/pip install guess_language
-$ flask/bin/pip install flipflop
-$ flask/bin/pip install coverage
 ```
 
 For the front end, use npm to install webpack and the dependencies as listed in `package.json`:
