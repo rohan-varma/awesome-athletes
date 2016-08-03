@@ -1,6 +1,6 @@
  2016 Skunkworks Project: Using Machine Learning to Learn from athlete-related data
 Getting Started With the Environment:
- - Clone the repository.
+ - Clone the repository..
  - Ensure that you have `npm` and `pip` installed. 
  - To install pip, run `sudo easy_install pip`.
  - Install virtualenv. This is so that we can have mulitple versions of Python/Python libraries. Virtualenv lets you have many different installations for python, useful if you use it for other projects. Run `sudo easy_install virtaulenv`.
