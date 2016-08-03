@@ -3,7 +3,7 @@ Getting Started With the Environment:
  - Clone the repository.
  - Ensure that you have `npm` and `pip` installed. 
  - To install pip, run `sudo easy_install pip`.
- - Install virtualenv. This is so that we can have mulitple versions of Python/Python libraries. Virtualenv lets you have many different installations for python, useful if you use it for other projects. Run `sudo easy_install virtaulenv`.
+ - Install virtualenv. This is so that we can have mulitple versions of Python/Python libraries. Virtualenv lets you have many different installations for python, useful if you use it for other projects. Run `sudo easy_install virtualenv`.
  - Set up the backend by creating a virtual environment and then installing the backend requirements with `pip`:
  
  ```python
