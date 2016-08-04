@@ -13,11 +13,10 @@ if __name__ == '__main__':
     interactor.disconnect()
     #create a preprocessor to preprocess the data
     processor = Preprocessor(arr)
+    processor.print_curr_arr()
     #print processor.get_shape()
     #after preprocessing the data, cluster it.
 
 
 
     #build a locality sensitive hash table
-
-    

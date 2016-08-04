@@ -5,6 +5,7 @@ import numpy as np
 
 class Preprocessor:
     def __init__(self, data_set):
+        np.set_printoptions(threshold=np.inf)
         self.data = np.array(data_set)
         self.feature_names = self.data[0]
 
@@ -23,3 +24,6 @@ class Preprocessor:
 
     def scale_data(self, vector):
         pass
+
+    def print_curr_arr(self):
+        print self.data
