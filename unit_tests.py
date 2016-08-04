@@ -24,7 +24,10 @@ class PreprocessTestCase(unittest.TestCase):
     def test_remove_missing_indices(self):
         arr = [1,2,3]
         p = Preprocessor(np.array(arr))
-        self.assertTrue(p.remove_missing_indices(arr) == 5)
+        self.assertTrue(p.remove_missing_indices(arr) == -1)
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
