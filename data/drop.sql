@@ -1,1 +1,1 @@
-DROP TABLE Batting ;
+DROP TABLE pitching ;

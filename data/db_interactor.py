@@ -4,11 +4,11 @@ import sqlite3
 
 class DBInteractor:
     #default constructor that produces a DataFrame of all the columns in the batting table
-    def __init__(self):
+    def __init__(self, table_name="batting"):
         pd.set_option('display.width', 1000)
         pd.set_option('display.max_columns', 500)
         self.con = sqlite3.connect("test.db")
-        self.df = pd.read_sql_query("SELECT * from batting", self.con)
+        self.df = pd.read_sql_query("SELECT * from " + table_name, self.con)
 
     #pass in a table name and produces the dataframe for all the columns there
     # def __init__(self, table_name):
