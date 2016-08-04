@@ -22,17 +22,22 @@ class Preprocessor:
 
     #goes through the dataset and returns the max feature values
     def get_max_feature_values(self, data_set):
-        pass
+        return data_set.max(axis=0)
+
     #returns a new vector that has the removes the "zero" indices
     def remove_missing_indices(self, vector):
         return -1
+
     # returns a new vector with string indices removed
     def remove_string_indices(self, vector):
-        pass
+        pass #already implemented
 
-    def scale_data(self, vector):
-        pass
-
+    def scale_data(self, data_set):
+        maxes = self.get_max_feature_values(data_set)
+        for x in xrange(data_set.shape[0]):
+            for y in xrange(data_set.shape[1]):
+                data_set[x][y] = (data_set[x][y])/maxes[y]
+        return data_set
     def print_curr_arr(self):
         print self.data
 
@@ -41,6 +46,4 @@ class Preprocessor:
 
 
     def preprocess(self, data):
-        new_data_set = []
-        for x in xrange(data.shape[0]):
-            new_data_set.append(remove_missing_indices(remove_string_indices(data[x])))
+        pass
