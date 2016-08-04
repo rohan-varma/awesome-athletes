@@ -8,6 +8,16 @@ class Preprocessor:
         np.set_printoptions(threshold=np.inf)
         self.data = np.array(data_set)
         self.feature_names = self.data[0]
+        self.df = data_frame
+
+
+    def drop_useless_stuff(self, cols_to_drop):
+        self.df = self.df.drop(cols_to_drop, axis=1)
+        return self.df
+
+    def get_as_matrix(self):
+        return self.df.as_matrix()
+
 
     #get the shape of the data
     def get_shape(self):
@@ -25,6 +35,7 @@ class Preprocessor:
         return -1
     # returns a new vector with string indices removed
     def remove_string_indices(self, vector):
+        pass
 
     def scale_data(self, vector):
         pass
