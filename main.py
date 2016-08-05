@@ -6,7 +6,7 @@ from sklearn.preprocessing import Normalizer
 from db_interactor import DBInteractor
 from preprocess import Preprocessor
 from k_means_clustering import kmeans
-
+import sys
 if __name__ == '__main__':
     #np.set_printoptions(threshold=np.inf)
 
@@ -42,6 +42,8 @@ if __name__ == '__main__':
     k = kmeans()
 
     means = k.initialize_means(subset_playerdata_matrix,400)
+    k.print_means()
+    #sys.exit()
     final_clusters = k.k_means_algorithm(subset_playerdata_matrix,means)
 
     for x in range(0, 400):
