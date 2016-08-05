@@ -23,28 +23,50 @@
 
       <div class="site-wrapper-inner">
 
+        <div style="padding: 10 10">
+          <table class="table">
+            <thead class="thead-inverse">
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Year</th>
+                <th>G</th>
+                <th>AB</th>
+                <th>R</th>
+                <th>H</th>
+                <th>TWOB</th>
+                <th>THREEB</th>
+                <th>HR</th>
+                <th>RBI</th>
+                <th>SB</th>
+                <th>CS</th>
+                <th>BB</th>
+                <th>SO</th>
+                <th>IBB</th>
+                <th>SH</th>
+                <th>SF</th>
+                <th>GIDP</th>
+              </tr>
+            </thead>
+            <tbody id="result-body">
+            </tbody>
+          </table>
+        </div>
         <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-            </div>
-          </div>
-
           <div class="inner cover">
             <h1 class="cover-heading">r.a.a.r</h1>
             <p class="lead">request athletes approximately resembled</p>
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">query:</span>
-                <input type="text" class="form-control" placeholder="enter query" aria-describedby="basic-addon1" onl>
+                <input id="search-field" type="text" class="form-control" placeholder="enter query" aria-describedby="basic-addon1" onl>
             </div>
             <div>
               <div class="pull-left">
-                <h4>supported queries:</h4>
+                <h4>currently supported queries:</h4>
                 <div style="padding-left:5px">
                   <ul>
                     <li><span class="predicate1">similar</span> <span class="predicate2">to</span> salvidor perez <span class="predicate2">in</span> 2014
-                    </li>
-                    <li><span class="predicate1">similar</span> <span class="predicate2">to</span> salvidor perez
                     </li>
                   </ul>
                 </div>
@@ -71,10 +93,79 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
-      $(".input1").keyup(function (e) {
+      function Get(yourUrl){
+        var Httpreq = new XMLHttpRequest(); // a new request
+        Httpreq.open("GET",yourUrl,false);
+        Httpreq.send(null);
+        return Httpreq.responseText;
+      }
+
+      function generateTR(data, index) {
+        var tr = document.createElement('tr');
+        var th = document.createElement('th');
+        th.setAttribute("scope","row");
+        th.textContent = index.toString();
+        tr.appendChild(th);
+
+        console.log(data);
+        for (var i = 0; i < data.length; i++) {
+          var td = document.createElement('td');
+          td.textContent = data[i]
+          tr.appendChild(td)
+        }
+        return tr
+      }
+
+      function emptyElement(element){
+        var i = element.childNodes.length;
+        while(i--){
+          element.removeChild(element.lastChild);
+        }
+      }
+
+      $("#search-field").keyup(function (e) {
         if (e.keyCode == 13) {
-          
+          if ($("#search-field").val().includes("similar to")) {
+
+            var response = Get("http://127.0.0.1:5000/search/"+$("#search-field").val())
+            var body = JSON.parse(response)
+//             var body = {
+//    "athletes": [
+//       [
+//          1,
+//          2,
+//          3,
+//          4,
+//          5,
+//          6,
+//          7,
+//          8,
+//          9,
+//          10,
+//          11,
+//          12,
+//          13,
+//          15,
+//          16,
+//          17,
+//          18,
+//          19,
+//          20
+//       ]
+//    ]
+}
+            var index = 1
+            var tbody = document.getElementById("result-body")
+            emptyElement(tbody)
+            body.athletes = [[1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20]]
+            for (var i=0; i < body.athletes.length; i++) {
+              console.log(body.athletes[i])
+              var trElement = generateTR(body.athletes[i], index);
+              tbody.appendChild(trElement)
+            }
+          }
         }
       });
+
     </script>
   </body>
