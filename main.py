@@ -5,52 +5,58 @@ import k_means_clustering
 from sklearn.preprocessing import Normalizer
 from db_interactor import DBInteractor
 from preprocess import Preprocessor
+from k_means_clustering import kmeans
 
 if __name__ == '__main__':
     #np.set_printoptions(threshold=np.inf)
+
+
     #create a DB interactor
-    interactor = DBInteractor("season_batting")
-    #gets the dataframe
-    df = interactor.get_current_data_frame()
-    #print(df)
-    #df = df.drop(['yearID','stint','stint','teamID','lgId','HBP', 'playerID'], axis=1)
-    arr_with_ids = interactor.df_to_numpy_matrix()
-    cols = ['playerID', 'yearID']
-    df = interactor.drop_useless_stuff(cols)
-    #converts it to a numpy matrix
-    arr = interactor.df_to_numpy_matrix()
-    arr = arr.astype(float)
-    #print arr
-    #don't forget to disconnect
+    interactor = DBInteractor("batting")
+
+    #Only get player id's
+    get_playerids = interactor.load_data_frame_from_table(table_name="batting", complete_query="SELECT playerID FROM batting WHERE AB>50")
+    playerid_matrix = interactor.df_to_numpy_matrix()
+    subset_playerid_matrix = playerid_matrix[np.shape(get_playerids)[0] - 4000:np.shape(get_playerids)[0]-1,:]
+
+
+
+    #Get player id, year, team
+    get_compelteplayerinfo = interactor.load_data_frame_from_table(table_name="batting", complete_query="SELECT playerID,yearID,teamID FROM batting WHERE AB>50")
+    playerinfo_matrix = interactor.df_to_numpy_matrix()
+    subset_playerinfo_matrix = playerinfo_matrix[np.shape(get_compelteplayerinfo)[0] - 4000:np.shape(get_compelteplayerinfo)[0]-1,:]
+
+    #Get data for players
+    get_player_data = interactor.load_data_frame_from_table(table_name="batting", complete_query="SELECT R,H,TWOB,THREEB,H,R,RBI,SB,CS,BB,SO,IBB,HBP,SF,SH,GIDP FROM batting WHERE AB > 50")
+    playerdata_matrix = interactor.df_to_numpy_matrix()
+    subset_playerdata_matrix = playerdata_matrix[np.shape(get_player_data)[0] - 4000:np.shape(get_player_data)[0]-1, :]
+
+    #All data for players
+    get_allplayer_data = interactor.load_data_frame_from_table(table_name="batting",
+                                                            complete_query="SELECT playerID, yearID, teamID, G,AB,R,H,TWOB,THREEB,H,R,RBI,SB,CS,BB,SO,IBB,HBP,SF,SH,GIDP FROM batting WHERE AB > 50")
+    allplayerdata_matrix = interactor.df_to_numpy_matrix()
+    subset_allplayerdata_matrix = allplayerdata_matrix[np.shape(get_allplayer_data)[0] - 4000:np.shape(get_allplayer_data)[0]-1, :]
+
     interactor.disconnect()
-    #create a preprocessor to preprocess the data
-    #this doesn't do anything very useful right now
 
-    p = Preprocessor(arr, df)
-    # maxes = p.get_max_feature_values(arr)
-    # print maxes
-    # arr = arr.astype(float)
-    # arr = p.scale_data(arr)
-    #print p.get_average_feature_values(arr)
-    # for x in xrange(arr.shape[0]):
-    #     all_zero = True
-    #     for y in xrange(arr.shape[1]):
-    #         if arr[x][y] != 0:
-    #             all_zero = False
-    #     if all_zero:
-    #         print "found array with all zeros"
-    # print "done checking for zeros"
-    arr = p.preprocess(arr)
-    num_zeros = 0
-    num_instances = 0
-    for x in xrange(arr.shape[0]):
-        for y in xrange(arr.shape[1]):
-            num_instances = num_instances + 1
-            if arr[x][y] == 0:
-                num_zeros = num_zeros + 1
-            if arr[x][y] > 1:
-                print "something got messed up"
-    print num_zeros/float(num_instances)
+    k = kmeans()
+
+    means = k.initialize_means(subset_playerdata_matrix,400)
+    final_clusters = k.k_means_algorithm(subset_playerdata_matrix,means)
+
+    for x in range(0, 400):
+        for y in range(0, len(final_clusters)):
+            if final_clusters[y] == x:
+                print(subset_allplayerdata_matrix[y,:])
+        print("")
+        print("")
+        print("")
+        print("")
+        print("")
+        print("")
+        print("")
+        print("")
+        print("")
 
 
 
@@ -58,4 +64,7 @@ if __name__ == '__main__':
 
 
 
-    #build a locality sensitive hash table
+
+
+
+
