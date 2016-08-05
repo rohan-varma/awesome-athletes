@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, Response
+from flask import jsonify
 app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
@@ -11,7 +12,9 @@ def search(query):
     #supported query :
         # similar to salvidor perez
     #parse query get similar athletes and return results in json
-    return "searching"
+    dat = jsonify(athlete = "none",
+                      error = "errors!")
+    return dat
 
 
 if __name__ == '__main__':
