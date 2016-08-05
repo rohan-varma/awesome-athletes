@@ -6,7 +6,7 @@ from sklearn.preprocessing import Normalizer
 from db_interactor import DBInteractor
 from preprocess import Preprocessor
 from k_means_clustering import kmeans
-
+import sys
 if __name__ == '__main__':
     #np.set_printoptions(threshold=np.inf)
 
