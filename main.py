@@ -15,25 +15,25 @@ if __name__ == '__main__':
     interactor = DBInteractor("batting")
 
     #Only get player id's
-    get_playerids = interactor.load_data_frame_from_table(table_name="batting", complete_query="SELECT playerID FROM batting WHERE AB>50")
+    get_playerids = interactor.load_data_frame_from_table(table_name="season_bat_name", complete_query="SELECT name_first,name_last FROM season_bat_name WHERE AB>50")
     playerid_matrix = interactor.df_to_numpy_matrix()
     subset_playerid_matrix = playerid_matrix[np.shape(get_playerids)[0] - 4000:np.shape(get_playerids)[0]-1,:]
 
 
 
     #Get player id, year, team
-    get_compelteplayerinfo = interactor.load_data_frame_from_table(table_name="batting", complete_query="SELECT playerID,yearID,teamID FROM batting WHERE AB>50")
+    get_compelteplayerinfo = interactor.load_data_frame_from_table(table_name="season_bat_name", complete_query="SELECT name_first,name_last,yearID FROM season_bat_name WHERE AB>50")
     playerinfo_matrix = interactor.df_to_numpy_matrix()
     subset_playerinfo_matrix = playerinfo_matrix[np.shape(get_compelteplayerinfo)[0] - 4000:np.shape(get_compelteplayerinfo)[0]-1,:]
 
     #Get data for players
-    get_player_data = interactor.load_data_frame_from_table(table_name="batting", complete_query="SELECT R,H,TWOB,THREEB,H,R,RBI,SB,CS,BB,SO,IBB,HBP,SF,SH,GIDP FROM batting WHERE AB > 50")
+    get_player_data = interactor.load_data_frame_from_table(table_name="season_bat_name", complete_query="SELECT R,H,TWOB,THREEB,H,R,RBI,SB,CS,BB,SO,IBB,SF,SH,GIDP FROM season_bat_name WHERE AB > 50")
     playerdata_matrix = interactor.df_to_numpy_matrix()
     subset_playerdata_matrix = playerdata_matrix[np.shape(get_player_data)[0] - 4000:np.shape(get_player_data)[0]-1, :]
 
     #All data for players
-    get_allplayer_data = interactor.load_data_frame_from_table(table_name="batting",
-                                                            complete_query="SELECT playerID, yearID, teamID, G,AB,R,H,TWOB,THREEB,H,R,RBI,SB,CS,BB,SO,IBB,HBP,SF,SH,GIDP FROM batting WHERE AB > 50")
+    get_allplayer_data = interactor.load_data_frame_from_table(table_name="season_bat_name",
+                                                            complete_query="SELECT name_first,name_last, yearID, G,AB,R,H,TWOB,THREEB,H,R,RBI,SB,CS,BB,SO,IBB,SF,SH,GIDP FROM season_bat_name WHERE AB > 50")
     allplayerdata_matrix = interactor.df_to_numpy_matrix()
     subset_allplayerdata_matrix = allplayerdata_matrix[np.shape(get_allplayer_data)[0] - 4000:np.shape(get_allplayer_data)[0]-1, :]
 
