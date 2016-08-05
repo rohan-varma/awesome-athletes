@@ -7,7 +7,7 @@ from db_interactor import DBInteractor
 from preprocess import Preprocessor
 
 if __name__ == '__main__':
-    #np.set_printoptions(threshold=np.inf)
+    np.set_printoptions(threshold=np.inf)
     #create a DB interactor
     interactor = DBInteractor("season_batting")
     #gets the dataframe
@@ -41,6 +41,7 @@ if __name__ == '__main__':
     #         print "found array with all zeros"
     # print "done checking for zeros"
     arr = p.preprocess(arr)
+    print arr
     num_zeros = 0
     num_instances = 0
     for x in xrange(arr.shape[0]):
