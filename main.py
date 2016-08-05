@@ -42,8 +42,6 @@ if __name__ == '__main__':
     k = kmeans()
 
     means = k.initialize_means(subset_playerdata_matrix,400)
-    k.print_means()
-    #sys.exit()
     final_clusters = k.k_means_algorithm(subset_playerdata_matrix,means)
 
     for x in range(0, 400):
