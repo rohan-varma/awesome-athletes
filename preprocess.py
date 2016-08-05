@@ -6,11 +6,10 @@ import pandas as pd
 from sklearn.preprocessing import Normalizer
 
 class Preprocessor:
-    def __init__(self, data_set, data_frame):
+    def __init__(self, data_set):
         np.set_printoptions(threshold=np.inf)
         self.data = np.array(data_set)
         self.feature_names = self.data[0]
-        self.df = data_frame
 
 
 
@@ -71,3 +70,4 @@ class Preprocessor:
         data = self.scale_data(data)
         #return data
         return self.normalize(data)
+

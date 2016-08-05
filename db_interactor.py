@@ -46,3 +46,4 @@ class DBInteractor:
     #call this when you're done with an instance of the database interactor. Don't have more than one DB connection open at once!
     def disconnect(self):
         self.con.close()
+
