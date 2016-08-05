@@ -38,7 +38,7 @@ class Preprocessor:
         avgs = self.get_average_feature_values(data_set)
         for x in xrange(data_set.shape[0]):
             for y in xrange(data_set.shape[1]):
-                data_set[x][y] = (data_set[x][y])/maxes[y]
+                data_set[x][y] = (float(data_set[x][y]))/float(maxes[y])
         return data_set
 
     def print_curr_arr(self):
@@ -69,4 +69,5 @@ class Preprocessor:
         #data = pca(data)
         data = self.remove_all_zeros(data)
         data = self.scale_data(data)
+        #return data
         return self.normalize(data)
