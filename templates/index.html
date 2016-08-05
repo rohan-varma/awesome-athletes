@@ -128,39 +128,20 @@
           if ($("#search-field").val().includes("similar to")) {
 
             var response = Get("http://127.0.0.1:5000/search/"+$("#search-field").val())
-            var body = JSON.parse(response)
-//             var body = {
-//    "athletes": [
-//       [
-//          1,
-//          2,
-//          3,
-//          4,
-//          5,
-//          6,
-//          7,
-//          8,
-//          9,
-//          10,
-//          11,
-//          12,
-//          13,
-//          15,
-//          16,
-//          17,
-//          18,
-//          19,
-//          20
-//       ]
-//    ]
-}
+            console.log($.parseJSON(response))
+            var body = $.parseJSON(response)
+            var athletes = []
+
+            for (var j = 0; j < body.length; j++) {
+              athletes.push($.parseJSON(body[j]))
+            }
+            console.log(athletes)
             var index = 1
             var tbody = document.getElementById("result-body")
             emptyElement(tbody)
-            body.athletes = [[1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20]]
-            for (var i=0; i < body.athletes.length; i++) {
-              console.log(body.athletes[i])
-              var trElement = generateTR(body.athletes[i], index);
+            //body.athletes = [[1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20]]
+            for (var i=0; i < athletes.length; i++) {
+              var trElement = generateTR(athletes[i], index);
               tbody.appendChild(trElement)
             }
           }

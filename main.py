@@ -47,7 +47,7 @@ class Main:
         # print get_playerids
         # sys.exit()
         playerid_matrix = interactor.df_to_numpy_matrix()
-        subset_playerid_matrix = playerid_matrix[np.shape(get_playerids)[0] - 100:np.shape(get_playerids)[0]-1,:]
+        subset_playerid_matrix = playerid_matrix[np.shape(get_playerids)[0] - 2000:np.shape(get_playerids)[0]-1,:]
 
 
 
@@ -56,18 +56,18 @@ class Main:
         #print get_compelteplayerinfo.values[0][0]
         #sys.exit()
         playerinfo_matrix = interactor.df_to_numpy_matrix()
-        subset_playerinfo_matrix = playerinfo_matrix[np.shape(get_compelteplayerinfo)[0] - 100:np.shape(get_compelteplayerinfo)[0]-1,:]
+        subset_playerinfo_matrix = playerinfo_matrix[np.shape(get_compelteplayerinfo)[0] - 2000:np.shape(get_compelteplayerinfo)[0]-1,:]
 
         #Get data for players
         get_player_data = interactor.load_data_frame_from_table(table_name="season_bat_name", complete_query="SELECT R,H,TWOB,THREEB,HR,RBI,SB,CS,BB,SO,IBB,SF,SH,GIDP FROM season_bat_name WHERE AB > 50")
         playerdata_matrix = interactor.df_to_numpy_matrix()
-        subset_playerdata_matrix = playerdata_matrix[np.shape(get_player_data)[0] - 100:np.shape(get_player_data)[0]-1, :]
+        subset_playerdata_matrix = playerdata_matrix[np.shape(get_player_data)[0] - 2000:np.shape(get_player_data)[0]-1, :]
 
         #All data for players
         get_allplayer_data = interactor.load_data_frame_from_table(table_name="season_bat_name",
                                                                 complete_query="SELECT name_first,name_last, yearID, G,AB,R,H,TWOB,THREEB,HR,RBI,SB,CS,BB,SO,IBB,SF,SH,GIDP FROM season_bat_name WHERE AB > 50")
         allplayerdata_matrix = interactor.df_to_numpy_matrix()
-        subset_allplayerdata_matrix = allplayerdata_matrix[np.shape(get_allplayer_data)[0] - 100:np.shape(get_allplayer_data)[0]-1, :]
+        subset_allplayerdata_matrix = allplayerdata_matrix[np.shape(get_allplayer_data)[0] - 2000:np.shape(get_allplayer_data)[0]-1, :]
 
         interactor.disconnect()
 
