@@ -1,5 +1,7 @@
  2016 Skunkworks Project: Using Machine Learning to Learn from athlete-related data
+ 
  ***Apologies for the horribly organized codebase!***
+ 
 Getting Started With the Environment:
  - Clone the repository..
  - Ensure that you have `npm` and `pip` installed. 
