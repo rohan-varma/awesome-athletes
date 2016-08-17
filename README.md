@@ -14,6 +14,7 @@ virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+(NOTE: `requirements.txt` may not be completely up-to-date with the latest python library dependencies. If you get an error saying a certain module couldn't be found, run `pip install x` where x is the missing module. 
 
 For the front end, use npm to install webpack and the dependencies as listed in `package.json`:
 `npm install -g webpack` and then `npm install`.
