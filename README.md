@@ -33,5 +33,5 @@ Screenshots:
 - Front-end UI: Query for athletes: 
 ![UI](https://raw.githubusercontent.com/rohan-varma/awesome-athletes/master/images/intro_screen.png "Front-end UI")
 
--Results page rendered after parsing JSON response from backend:
+- Results page rendered after parsing JSON response from backend:
 ![Results](https://raw.githubusercontent.com/rohan-varma/awesome-athletes/master/images/query_results.png "Results page")
