@@ -1,7 +1,5 @@
  2016 Skunkworks Project: Using Machine Learning to Learn from athlete-related data
  
- ***Apologies for the horribly organized codebase!***
- 
 Getting Started With the Environment:
  - Clone the repository..
  - Ensure that you have `npm` and `pip` installed. 
@@ -29,3 +27,11 @@ Activate the virtualenv with `source venv/bin/activate`. Then run `python app.py
 Development: 
 - Make changes to the backend by editing `app.py`. 
 - Make changes to the front-end by editing the JS files and recompiling them with `webpack --watch`.
+
+Screenshots:
+
+- Front-end UI: Query for athletes: 
+![UI](https://raw.githubusercontent.com/rohan-varma/awesome-athletes/master/images/intro_screen.png "Front-end UI")
+
+-Results page rendered after parsing JSON response from backend:
+![Results](https://raw.githubusercontent.com/rohan-varma/awesome-athletes/master/images/query_results.png "Results page")
